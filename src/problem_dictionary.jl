@@ -31,9 +31,9 @@ include("em_mixture_of_3_normals.jl") # Removed because: can't generate multivar
 problems["Mixture of 3 normals"] = gen_em_mixture_of_3_normals
 
 include("potential_electric_field.jl")
-problems["Electric field, Gauss-Seidel"] = (;N = 100, randomize = false, T = typeof(1.)) -> gen_potential_electric_field(; algo! = gauss_seidel!, randomize, N, T)
-problems["Electric field, Jacobi"] = (;N = 100, randomize = false, T = typeof(1.)) -> gen_potential_electric_field(; algo! = jacobi!, randomize, N, T)
-problems["Electric field, SOR"] = (;N = 100, randomize = false, T = typeof(1.)) -> gen_potential_electric_field(; algo! = SOR!, randomize, N, T)
+problems["Electric field, Gauss-Seidel"] = (;n = 100, randomize = false, T = typeof(1.)) -> gen_potential_electric_field(; algo! = gauss_seidel!, randomize, n, T)
+problems["Electric field, Jacobi"] = (;n = 100, randomize = false, T = typeof(1.)) -> gen_potential_electric_field(; algo! = jacobi!, randomize, n, T)
+problems["Electric field, SOR"] = (;n = 100, randomize = false, T = typeof(1.)) -> gen_potential_electric_field(; algo! = SOR!, randomize, n, T)
 
 include("power_iteration.jl")
 problems["Power iter. for dom. eigenvalue"] = gen_power_iteration

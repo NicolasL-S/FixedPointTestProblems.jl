@@ -8,8 +8,10 @@ function value_given_shock(budget, ε, next_value_function, dnext_value_function
         -(ε * δ * x^(δ - 1) - β * SS.evaluate(dnext_value_function, budget - x + income)), 
         lower = 0., upper = budget, reltol_resid_grow = 1.5, maps_limit = 20)
 =#
-    opt.status != :first_order && (opt = Opt.optimize(x -> val(x, ε, δ, β, 
-        next_value_function, budget, income), 0.0, budget))
+#    opt.status != :first_order && (
+        opt = Opt.optimize(x -> val(x, ε, δ, β, 
+        next_value_function, budget, income), 0.0, budget)
+        #)
 
     prev_x0[] = opt.minimizer
     return -val(opt.minimizer, ε, δ, β, next_value_function, budget, income)
