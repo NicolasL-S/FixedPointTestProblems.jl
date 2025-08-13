@@ -212,21 +212,21 @@ function gen_higham_corr_matrix(; problem = :mmb13, T = typeof(1.), n_max = 0, r
 			A = insert_upper(x,1)
 			
 		elseif problem == :cor1399
-			file = matopen("data/corr_mat/cor1399.mat")
+			file = matopen(joinpath(@__DIR__, "data/corr_mat/cor1399.mat"))
 			Av = read(file, "x")[:,1]
 			A = insert_upper(Av,1)
 
 		elseif problem == :cor3120
-			file = matopen(CSV.File(joinpath(@__DIR__, "data/corr_mat/cor3120.mat")))
+			file = matopen(joinpath(@__DIR__, "data/corr_mat/cor3120.mat"))
 			Av = read(file, "x")[:,1]
 			A = insert_upper(Av,1)
 
 		elseif problem == :bccd16
-			file = matopen(CSV.File(joinpath(@__DIR__, "data/corr_mat/bccd16.mat")))
+			file = matopen(joinpath(@__DIR__, "data/corr_mat/bccd16.mat"))
 			A = read(file, "A")
 
 		elseif problem == :rocky
-			file = matopen(CSV.File(joinpath(@__DIR__, "data/corr_mat/Rocky_Mountain_Region_CORR.mat")))
+			file = matopen(joinpath(@__DIR__, "data/corr_mat/Rocky_Mountain_Region_CORR.mat"))
 			A = read(file, "A")
 
 		else
