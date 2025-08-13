@@ -102,12 +102,12 @@ function gen_Wang_PH_interval_censoring(; T = typeof(1.), randomize = false)
 	#start, ncoefs, d1, d2, d3, bLi, bRi, Xp = gen_problem_censPHEM_R()
 	x0 = [zeros(T, 4);ones(T, 6)] .+ randomize * (one(T) .- 2rand(T, 10)) # ncoef will be 4
 	# Importing precomputed data
-	d1 = (CSV.File("data/Wang_PH_interval_censoring/d1.csv", header=false) |> Tables.matrix)[:]
+	d1 = (CSV.File(joinpath(@__DIR__, "data/Wang_PH_interval_censoring/d1.csv"), header=false) |> Tables.matrix)[:]
 	d2 = falses(length(d1))
 	d3 = 1 .- d1
-	bLi = T.(CSV.File("data/Wang_PH_interval_censoring/bLi.csv", header=false) |> Tables.matrix)
-	bRi = T.(CSV.File("data/Wang_PH_interval_censoring/bRi.csv", header=false) |> Tables.matrix)
-	Xp = T.(CSV.File("data/Wang_PH_interval_censoring/Xp.csv", header=false) |> Tables.matrix)
+	bLi = T.(CSV.File(joinpath(@__DIR__, "data/Wang_PH_interval_censoring/bLi.csv"), header=false) |> Tables.matrix)
+	bRi = T.(CSV.File(joinpath(@__DIR__, "data/Wang_PH_interval_censoring/bRi.csv"), header=false) |> Tables.matrix)
+	Xp = T.(CSV.File(joinpath(@__DIR__, "data/Wang_PH_interval_censoring/Xp.csv"), header=false) |> Tables.matrix)
 	# Storage
 	#T = eltype(Xp)
 	N, ncoefs = size(Xp)
