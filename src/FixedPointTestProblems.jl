@@ -1,3 +1,6 @@
+"""
+$(read("README.md", String))
+"""
 module FixedPointTestProblems
 
 	# ---- Imports ----
