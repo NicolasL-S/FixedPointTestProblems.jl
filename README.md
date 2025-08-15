@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/NicolasL-S/FixedPointTestProblems.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/NicolasL-S/FixedPointTestProblems.jl/actions/workflows/CI.yml?query=branch%3Amain)
 
-FixedPointTestProblems is a library of problems from various scientific disciplines to test the performance of fixed-point acceleration methods. They are adapted from research papers and tutorials. Since scarcely any sets of fixed-point test problems exist in Julia (or anywhere), new contributions are most welcome.
+FixedPointTestProblems is a library of problems from various scientific disciplines to test the performance of fixed-point acceleration methods. They are adapted from research papers and tutorials. Since scarcely any sets of fixed-point problems exist in Julia (or anywhere), new contributions are most welcome.
 
 The problems
 1. Converge to a fixed point (which may not be unique) from reasonable starting values. (i.e. Let $F:\mathbb{R}^n\rightarrow\mathbb{R}^n$, the series $x, F(x), F(F(x)),...$ should converge to a fixed point of $F$;
