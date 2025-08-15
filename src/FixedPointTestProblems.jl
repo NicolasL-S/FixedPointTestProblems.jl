@@ -19,5 +19,5 @@ module FixedPointTestProblems
 	include("problem_dictionary.jl")
 
 	# ---- Exports ----
-	export problems
+	export testproblems
 end
