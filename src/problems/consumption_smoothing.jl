@@ -3,15 +3,14 @@ function val(x, ε, δ, β, next_value_function, budget, income)
 end
 
 function value_given_shock(budget, ε, next_value_function, dnext_value_function, δ, β, income, prev_x0)
-#=
+
     opt = SM.speedmapping(prev_x0[] > budget ? budget/2 : prev_x0[]; g = x -> 
         -(ε * δ * x^(δ - 1) - β * SS.evaluate(dnext_value_function, budget - x + income)), 
         lower = 0., upper = budget, reltol_resid_grow = 1.5, maps_limit = 20)
-=#
-#    opt.status != :first_order && (
-        opt = Opt.optimize(x -> val(x, ε, δ, β, 
-        next_value_function, budget, income), 0.0, budget)
-        #)
+
+    if opt.status != :first_order
+        opt = Opt.optimize(x -> val(x, ε, δ, β, next_value_function, budget, income), 0.0, budget)
+    end
 
     prev_x0[] = opt.minimizer
     return -val(opt.minimizer, ε, δ, β, next_value_function, budget, income)

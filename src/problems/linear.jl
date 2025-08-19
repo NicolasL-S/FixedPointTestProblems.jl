@@ -5,6 +5,9 @@ function sumi(f, s :: T, range) :: T where T
     return s
 end
 
+obj_diag(x, diago, b) = sumi(i -> x[i] * (0.5x[i] * diago[i] - b[i]), zero(eltype(x)), eachindex(x))
+map_diag!(x_out, x_in, one_minus_diago, b) =  @. x_out = one_minus_diago * x_in + b
+
 """
 Solving the linear system of equations
 ```math
@@ -22,15 +25,17 @@ Keyword arguments:
 function gen_linear(;n = 100, randomize = false, T = typeof(1.))
 	if randomize
 		ε = T(1/n)
-		tr = ε .+ (2 - 2ε) * rand(T, n)
+		diago = ε .+ (2 - 2ε) * rand(T, n)
 		b = rand(T, n)
 	else
-		tr = T.(2(1:n)/(n+1))
+		diago = T.(2(1:n)/(n+1))
 		b = ones(T, n)
 	end	
+	one_minus_diago = one(T) .- diago
 
-	map_diag! = (x_out, x_in) -> @. x_out = x_in - tr .* x_in + 1.
-	obj_diag(x) = sumi(i -> x[i] * (0.5tr[i] * x[i] - one(T)), zero(T), 1:n)
-
-	return (x0 = zeros(n), map! = map_diag!, obj = obj_diag)
+	return (
+		x0 = zeros(n), 
+		map! = (x_out, x_in) -> map_diag!(x_out, x_in, one_minus_diago, b), 
+		obj = x -> obj_diag(x, diago, b)
+	)
 end
