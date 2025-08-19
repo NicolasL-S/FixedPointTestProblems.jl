@@ -34,7 +34,7 @@ p = testproblems["Bratu"]
 ? p
 ```
 """
-const testproblems = Dict{AbstractString, Function}()
+testproblems = Dict{AbstractString, Function}()
 
 include("problems/als_canonical_tensor.jl")
 testproblems["ALS for CANDECOMP"] = gen_als_canonical_tensor
