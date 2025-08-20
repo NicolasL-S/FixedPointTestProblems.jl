@@ -12,7 +12,7 @@ module FixedPointTestProblems
 	using Distributions
 	import SchumakerSpline as SS
 	import Optim as Opt
-	import SpeedMapping as SM
+	#import SpeedMapping as SM
 	using HCubature
 	using TensorToolbox: full, ktensor
 	using TensorDecompositions: khatrirao!, _row_unfold
