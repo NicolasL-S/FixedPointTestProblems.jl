@@ -3,6 +3,7 @@ function val(x, ε, δ, β, next_value_function, budget, income)
 end
 
 function value_given_shock(budget, ε, next_value_function, dnext_value_function, δ, β, income, prev_x0)
+#  Will eventually put speedmapping back when the new version is released.
 #=
     opt = SM.speedmapping(prev_x0[] > budget ? budget/2 : prev_x0[]; g = x -> 
         -(ε * δ * x^(δ - 1) - β * SS.evaluate(dnext_value_function, budget - x + income)), 
@@ -49,9 +50,8 @@ then find what would be the optimal decisions for one period before, then one pe
 on and so forth. This constitues a contraction mapping which can be accelerated.
 
 This problem has explained in detail in the applications of FixedPointAcceleration 
-(https://s-baumann.github.io/FixedPointAcceleration.jl/dev/4_Applications/). Below is a simplified
-version of the code with a few changes, notably swapping Optim's minimization for speedmapping
-which allows to reuse the last x in the next minimization for a significant speed-up.
+(https://s-baumann.github.io/FixedPointAcceleration.jl/dev/4_Applications/). This is a simplified
+version of the code.
 
 Keyword arguments:
 ; T = typeof(1.), randomize = false
